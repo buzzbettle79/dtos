@@ -183,7 +183,9 @@ echo "#########################################################"
 
 echo "Installing NVM and NodeJS..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-source ~/.bashrc | nvm install --lts | nvm use --lts
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install --lts | nvm use --lts
 
 echo "Installing cargo using rustup..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
