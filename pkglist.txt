@@ -19,8 +19,6 @@ dtos-bash
 dtos-cache
 dtos-conky
 dtos-dmscripts
-dtos-doom
-dtos-fish
 dtos-local-bin
 dtos-opendoas
 dtos-qutebrowser
@@ -33,7 +31,6 @@ elementary-icon-theme
 emacs
 exa
 fd
-fish
 git
 htop
 libxft
