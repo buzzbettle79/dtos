@@ -178,13 +178,31 @@ if [ -d "/etc/dtos/.config/xmonad/" ]; then
 fi
 
 echo "#########################################################"
-echo "## Installing Doom Emacs. This may take a few minutes. ##"
+echo "## Installing LunarVim.                                ##" 
 echo "#########################################################"
-[ -d ~/.emacs.d ] && mv ~/.emacs.d ~/.emacs.d.bak.$(date +"%Y%m%d_%H%M%S")
-[ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.bak.$(date +"%Y%m%d_%H%M%S")
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom --force install
-~/.emacs.d/bin/doom sync
+
+echo "Installing NVM and NodeJS..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+source ~/.bashrc | nvm install --lts | nvm use --lts
+
+echo "Installing cargo using rustup..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+
+echo "Installing other dependencies if not already installed..."
+sudo pacman -S git make python python-pip
+
+echo "Finally installing LunarVim..."
+LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/fc6873809934917b470bff1b072171879899a36b/utils/installer/install.sh)
+
+# echo "#########################################################"
+# echo "## Installing Doom Emacs. This may take a few minutes. ##"
+# echo "#########################################################"
+# [ -d ~/.emacs.d ] && mv ~/.emacs.d ~/.emacs.d.bak.$(date +"%Y%m%d_%H%M%S")
+# [ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.bak.$(date +"%Y%m%d_%H%M%S")
+# git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+# ~/.emacs.d/bin/doom --force install
+# ~/.emacs.d/bin/doom sync
 
 [ ! -d /etc/pacman.d/hooks ] && sudo mkdir /etc/pacman.d/hooks
 sudo cp /etc/dtos/.config/xmonad/pacman-hooks/recompile-xmonad.hook /etc/pacman.d/hooks/
