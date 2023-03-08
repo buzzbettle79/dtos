@@ -52,7 +52,7 @@ localewarning() { \
         dialog --colors --title "\Z7\ZbInstalling DTOS!" --msgbox "\Z4WARNING! Your locales have not been set! Please check that both the LANG and LC_CTYPE variables are set to the appropriate locale in /etc/locale.conf (NOTE: they should both be the same). Run 'sudo locale-gen', reboot and run the script again. You can reference the Arch Wiki while doing so: https://wiki.archlinux.org/title/locale" 16 60 && error "Your locales have not been set! Please check that both the LANG and LC_CTYPE variables are set to the appropriate locale in /etc/locale.conf (NOTE: they should both be the same). Run 'sudo locale-gen', reboot and run the script again. You can reference the Arch Wiki while doing so: https://wiki.archlinux.org/title/locale"
 }
 
-localewarning
+# localewarning
 
 lastchance() { \
     dialog --colors --title "\Z7\ZbInstalling DTOS!" --msgbox "\Z4WARNING! The DTOS installation script is currently in public beta testing. There are almost certainly errors in it; therefore, it is strongly recommended that you not install this on production machines. It is recommended that you try this out in either a virtual machine or on a test machine." 16 60
