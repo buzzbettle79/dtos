@@ -28,11 +28,11 @@ dtos-xresources
 dtos-xwallpaper
 dtos-zsh
 elementary-icon-theme
-emacs
 exa
 fd
 git
 htop
+librewolf-bin
 libxft
 lolcat
 lxappearance
